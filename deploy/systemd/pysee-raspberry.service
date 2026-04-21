@@ -1,0 +1,15 @@
+[Unit]
+Description=pysee raspberry camera publisher
+After=network-online.target dev-video0.device
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/pysee
+EnvironmentFile=/etc/pysee/raspberry.env
+ExecStart=/opt/pysee/.venv/bin/python -m pysee.raspberry.main
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

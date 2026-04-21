@@ -1,0 +1,16 @@
+[Unit]
+Description=pysee local video server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/pysee
+Environment=PYSEE_SERVER_HOST=0.0.0.0
+Environment=PYSEE_SERVER_PORT=8080
+ExecStart=/opt/pysee/.venv/bin/python -m pysee.server.main
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -7,6 +7,8 @@ Simple intranet video surveillance skeleton for a Raspberry Pi 2B and a local Li
 - `src/pysee/raspberry`: Raspberry Pi side that captures `/dev/video0` and publishes video via WebRTC.
 - `src/pysee/server`: Local server that receives the stream and serves the browser viewer.
 - `src/pysee/common`: Shared config and WebRTC helpers.
+- `deploy/systemd`: systemd units for headless startup.
+- `deploy/env`: sample environment files for Linux.
 
 ## Run
 
@@ -22,6 +24,8 @@ Start the local server:
 python -m pysee.server.main
 ```
 
+You can also install the server as a systemd service with the unit file in `deploy/systemd/pysee-server.service`.
+
 Start the Raspberry side on the Pi:
 
 ```bash
@@ -31,8 +35,11 @@ python -m pysee.raspberry.main
 
 If you are only developing from Windows for now, set the same variable in your shell before running the script.
 
+For a headless Raspberry Pi install, copy `deploy/env/raspberry.env.example` to `/etc/pysee/raspberry.env` and use the unit file in `deploy/systemd/pysee-raspberry.service`.
+
 ## Notes
 
 - The skeleton currently assumes one active USB webcam at `/dev/video0`.
 - The server exposes `/api/ingest/offer` for the Raspberry and `/api/viewer/offer` for the browser viewer.
+- The viewer page keeps retrying until the Raspberry publishes a stream.
 - On a Raspberry Pi 2B you may need to pin dependency versions later if a wheel is unavailable for ARMv7.
