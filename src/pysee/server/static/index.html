@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PySee</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #111827;
+        color: #e5e7eb;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at top, #1f2937, #030712 70%);
+      }
+      main {
+        width: min(960px, calc(100vw - 32px));
+        background: rgba(17, 24, 39, 0.9);
+        border: 1px solid #374151;
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      }
+      video {
+        width: 100%;
+        border-radius: 16px;
+        background: #000;
+        aspect-ratio: 16 / 9;
+      }
+      .status {
+        margin-top: 16px;
+        font-size: 14px;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <video id="viewer" autoplay playsinline controls muted></video>
+      <div class="status" id="status">Waiting for Raspberry stream...</div>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
