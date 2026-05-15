@@ -1,6 +1,6 @@
 # PySee
 
-Simple intranet video surveillance skeleton for a Raspberry Pi 2B and a local Linux server.
+Simple intranet video surveillance app for a Raspberry Pi 2B and a local Linux server.
 
 ## Layout
 
